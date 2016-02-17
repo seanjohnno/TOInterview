@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">TimeOut</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="London">London</string>
+    <string name="recruitment">TimeOut Recruitment</string>
+    <string name="employment">TimeOut employs Android King!</string>
+    <string name="yosser">Gis a job - \"Yozzer Hughes\"</string>
+    <string name="error">Error - No handler for this yet</string>
+    <string name="glum">Why so glum... chum?</string>
+
+</resources>
