@@ -18,7 +18,6 @@ import timeout.slang.com.model.scraper.common.handlers.HandlerMatchStart;
 /**
  * Used to scrape website pages - Not very efficient as each char is matched against each handler.
  * Most robust impl so far though, certain things throwing state machine & regex out
- * TODO - state machine or trie to do the matching.
  */
 public class ScraperMainImpl implements IScraperMain {
 
