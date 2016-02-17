@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -91,6 +92,14 @@ public class FragmentLoadingMain extends FragmentBase implements Animation.Anima
             public boolean onPreDraw() {
                 mBottom.getViewTreeObserver().removeOnPreDrawListener(this);
                 setMinimumEndTime();
+                return true;
+            }
+        });
+
+        // Stop touch events getting to underlying screen
+        v.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
                 return true;
             }
         });
