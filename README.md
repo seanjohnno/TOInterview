@@ -19,5 +19,6 @@ A bit of a dirty demo! It scrapes the TimeOut website and groups section/zone ti
 
 # What's left?
 
+* As pages are image heavy, resources are going to run out pretty fast if we go a few levels deep. Probably should have either single page (and maintain backstack of urls) or make sure resources are released in hidden fragments
 * I was asked to submit today so I had to rush a bit. I would have liked to have done more unit testing on the UI
 * To figure out what the other page formats are and what I can display for them
