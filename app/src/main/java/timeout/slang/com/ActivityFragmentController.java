@@ -25,7 +25,7 @@ public class ActivityFragmentController extends FragmentActivity implements IFra
      * ------------------------------------------------------------------------------------------ */
 
     public static final String KingClick = "local://kingclick";
-
+    
     /**
      * Controller class to control display of FragmentLoadingMain
      */
