@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
-import timeout.slang.com.view.helper.HelperTOImage;
+import timeout.slang.com.ui.helper.HelperTOImage;
 
 /**
  * Created by MrLenovo on 17/02/2016.

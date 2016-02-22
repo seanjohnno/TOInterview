@@ -4,8 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import timeout.slang.com.view.helper.HelperTOImage;
-import timeout.slang.com.view.views.ViewTOImage;
+import timeout.slang.com.ui.helper.HelperTOImage;
+import timeout.slang.com.ui.views.ViewTOImage;
 
 /**
  * Dagger module for UI classes

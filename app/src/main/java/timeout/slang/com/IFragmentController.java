@@ -10,24 +10,10 @@ import timeout.slang.com.reusable.Func;
  */
 public interface IFragmentController {
 
-    /**
-     * Tell controller that we're loading the main feed
-     */
-    public void loadMainFeed(Func<List<TOSection>> callback);
+    public static final String KingClick = "localclick://";
 
-    /**
-     * @param url       URL of category clicked
-     */
-    public void subCategoryClicked(String url);
+    public void handleLoadingInitialContent();
 
-    /**
-     * Tell controller that a request (likely from a list click) has been made
-     */
-    public void loadContentRequest(Func<List<TOSection>> callback, String url);
-
-    /**
-     *
-     */
-    public void releaseContentRequest(String url);
+    public void handleInitialContentLoaded();
 
 }

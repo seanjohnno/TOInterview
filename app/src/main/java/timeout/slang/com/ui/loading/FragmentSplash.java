@@ -1,4 +1,4 @@
-package timeout.slang.com.view.fragments;
+package timeout.slang.com.ui.loading;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,11 +13,12 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
 import timeout.slang.com.R;
+import timeout.slang.com.ui.FragmentBase;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentLoadingMain extends FragmentBase implements Animation.AnimationListener {
+public class FragmentSplash extends Fragment implements Animation.AnimationListener {
 
     /* ------------------------------------------------------------------------------------------
      * Constants
@@ -26,7 +27,7 @@ public class FragmentLoadingMain extends FragmentBase implements Animation.Anima
     /**
      * Should be used when pushing this fragment onto the stack
      */
-    public static final String TAG = "FragmentLoadingMain";
+    public static final String TAG = "FragmentSplash";
 
     /**
      * Minimum showtime of 2seconds
@@ -76,7 +77,7 @@ public class FragmentLoadingMain extends FragmentBase implements Animation.Anima
      * Construction & From FragmentBase
      * ------------------------------------------------------------------------------------------ */
 
-    public FragmentLoadingMain() {
+    public FragmentSplash() {
         // Required empty public constructor
     }
 
@@ -183,11 +184,11 @@ public class FragmentLoadingMain extends FragmentBase implements Animation.Anima
         protected void onPostExecute(Void aVoid) {
             // Create top sliding animation
             int offscreenTop = -1*(mTop.getMeasuredHeight());
-            mTopAnimation = createAndSetYAnimation( mTop, offscreenTop, FragmentLoadingMain.this );
+            mTopAnimation = createAndSetYAnimation( mTop, offscreenTop, FragmentSplash.this );
 
             // Create bottom sliding animation
             int offscreenBottom = mBottom.getMeasuredHeight();
-            mBottomAnimation = createAndSetYAnimation(mBottom, offscreenBottom, FragmentLoadingMain.this );
+            mBottomAnimation = createAndSetYAnimation(mBottom, offscreenBottom, FragmentSplash.this );
 
             // Start both the animations
             mTop.startAnimation(mTopAnimation);

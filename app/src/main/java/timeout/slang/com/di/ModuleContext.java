@@ -7,14 +7,13 @@ import dagger.ObjectGraph;
 import dagger.Provides;
 import timeout.slang.com.model.ITimeoutModel;
 import timeout.slang.com.model.impl.TimeoutModelImpl;
-import timeout.slang.com.subcontroller.SubControllerDrillDown;
-import timeout.slang.com.subcontroller.SubControllerLoadMain;
-import timeout.slang.com.view.loaders.LoaderMainBuilder;
+import timeout.slang.com.ui.FragmentBase;
+import timeout.slang.com.ui.categories.LoaderMainBuilder;
 
 /**
  * Dagger module for scoped graph (when we need to inject Context)
  */
-@Module(library = true, injects = {LoaderMainBuilder.class, SubControllerLoadMain.class, SubControllerDrillDown.class})
+@Module(library = true, injects = {LoaderMainBuilder.class, FragmentBase.class})
 public class ModuleContext {
 
     private FragmentActivity mContext;

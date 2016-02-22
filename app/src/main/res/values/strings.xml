@@ -10,5 +10,5 @@
     <string name="yosser">Gis a job - \"Yosser Hughes\"</string>
     <string name="error">Error - No handler for this yet</string>
     <string name="glum">Why so glum... chum?</string>
-
+    <string name="null_url">Sorry, unable to visit this category</string>
 </resources>

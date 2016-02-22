@@ -1,4 +1,4 @@
-package timeout.slang.com.view.adapters;
+package timeout.slang.com.ui.categories;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
@@ -8,13 +8,11 @@ import java.util.List;
 
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
 import timeout.slang.com.model.dataobjects.TOSection;
-import timeout.slang.com.view.adapters.main.ViewHolder;
-import timeout.slang.com.view.adapters.main.ViewPopulator;
 
 /**
  * Created by MrLenovo on 12/02/2016.
  */
-public class AdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterCategories extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     /* ------------------------------------------------------------------------------------------
      * Private Members
@@ -26,6 +24,11 @@ public class AdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
     private List<ViewPopulator.IViewPopulator> mViewBuilderList;
 
+    /**
+     * Listener to call when an item is selected
+     */
+    private ICategorySelectListener mSelectListener;
+
     /* ------------------------------------------------------------------------------------------
      * Constructor & Public Methods
      * ------------------------------------------------------------------------------------------ */
@@ -34,7 +37,8 @@ public class AdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      * Constructor
      * @param sections     List of Time Out sections from main page
      */
-    public AdapterMain(List<TOSection> sections) {
+    public AdapterCategories(List<TOSection> sections, ICategorySelectListener listener) {
+        mSelectListener = listener;
         mViewBuilderList = createViewPopulators(sections);
     }
 
@@ -105,7 +109,9 @@ public class AdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return mViewBuilderList.get(position).getType();
     }
 
+
     /**
+     * TODO - Probably want to create these off the UI thread
      * Strategy pattern, have different types of ViewPopulators for different types of view. Map
      * 1-1 with list items
      * @param sections      List of TO sections from main page
@@ -113,18 +119,20 @@ public class AdapterMain extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
     private List<ViewPopulator.IViewPopulator> createViewPopulators(List<TOSection> sections) {
         List<ViewPopulator.IViewPopulator> viewBuilderList = new ArrayList<>();
-        for(TOSection section : sections) {
-            if(section.getTitle() != null && section.getTitle().length() > 0) {
-                viewBuilderList.add(new ViewPopulator.TitlePopulator(section.getTitle()));
-            }
+        if(sections != null) {
+            for (TOSection section : sections) {
+                if (section.getTitle() != null && section.getTitle().length() > 0) {
+                    viewBuilderList.add(new ViewPopulator.TitlePopulator(section.getTitle(), mSelectListener));
+                }
 
-            int startIndex = 0;
-            if(section.getCategoryItems().size() > 0 && section.getCategoryItems().size() % 2 != 0) {
-                viewBuilderList.add(new ViewPopulator.SingleImagePopulator( section.getCategoryItems().get(0) ));
-                startIndex++;
-            }
-            for(;startIndex < section.getCategoryItems().size(); startIndex+=2) {
-                viewBuilderList.add(new ViewPopulator.DoubleImagePopulator(section.getCategoryItems().get(startIndex), section.getCategoryItems().get(startIndex+1)) );
+                int startIndex = 0;
+                if (section.getCategoryItems().size() > 0 && section.getCategoryItems().size() % 2 != 0) {
+                    viewBuilderList.add(new ViewPopulator.SingleImagePopulator(section.getCategoryItems().get(0), mSelectListener));
+                    startIndex++;
+                }
+                for (; startIndex < section.getCategoryItems().size(); startIndex += 2) {
+                    viewBuilderList.add(new ViewPopulator.DoubleImagePopulator(section.getCategoryItems().get(startIndex), section.getCategoryItems().get(startIndex + 1), mSelectListener));
+                }
             }
         }
         return viewBuilderList;

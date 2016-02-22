@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import timeout.slang.com.TOApp;
@@ -56,17 +57,26 @@ public class TimeoutModelImpl implements ITimeoutModel {
      * @return      Rx Observable, subscribe on this to receive the list of TO categories
      */
     @Override
-    public Observable<List<TOSection>> getCategories(final String url) {
+    public void fetchData(final ITimeoutModelObserver observer, final CharSequence url) {
 
         // Parses HTML on io thread, then passes TOSection list back on Main thread
-        return Observable.create(new RxOnSubscribeVolleyRequest(mRequestQueue, url))
+        Observable.create(new RxOnSubscribeVolleyRequest(mRequestQueue, url))
                 .observeOn(Schedulers.io())
                 .map(new Func1<String, List<TOSection>>() {
-                    @Override
                     public List<TOSection> call(String s) {
                         return mScraperMain.buildScraper().parseHTML(s);
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<List<TOSection>>() {
+                               public void call(List<TOSection> toSections) {
+                                   observer.handleCategories(toSections);
+                               }
+                           }, new Action1<Throwable>() {
+                               public void call(Throwable throwable) {
+                                   observer.handleFailure(url.toString(), throwable);
+                               }
+                           }
+                );
     }
 }

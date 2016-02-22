@@ -7,24 +7,10 @@
     tools:context="timeout.slang.com.view.MainActivity"
     android:id="@+id/activity_root">
 
-    <fragment android:name="timeout.slang.com.view.fragments.FragmentMain"
+    <fragment android:name="timeout.slang.com.ui.categories.FragmentCategories"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragment_main"
         tools:layout="@layout/fragment_main"></fragment>
-
-    <!--<fragment android:name="timeout.slang.com.ui.fragments.FragmentSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_spinner"
-        tools:layout="@layout/fragment_spinner"></fragment>
-
-
-    <fragment android:name="timeout.slang.com.ui.fragments.FragmentLoadingMainMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_loading"
-        tools:layout="@layout/fragment_spinner"></fragment>-->
-
 
 </RelativeLayout>

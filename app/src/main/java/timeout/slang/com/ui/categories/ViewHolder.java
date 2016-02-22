@@ -1,9 +1,8 @@
-package timeout.slang.com.view.adapters.main;
+package timeout.slang.com.ui.categories;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import timeout.slang.com.R;
 import timeout.slang.com.TOApp;
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
-import timeout.slang.com.view.views.ViewTOImage;
+import timeout.slang.com.ui.views.ViewTOImage;
 
 /**
  * Standard Android ViewHolder pattern/classes. One for each type of View in the RecyclerView

@@ -21,7 +21,7 @@ public class RxOnSubscribeVolleyRequest implements Observable.OnSubscribe<String
     /**
      * Url we're requesting
      */
-    private String mUrl;
+    private CharSequence mUrl;
 
     /**
      * Volley RequestQueue
@@ -36,7 +36,7 @@ public class RxOnSubscribeVolleyRequest implements Observable.OnSubscribe<String
      * @param queue     Volley RequestQueue
      * @param url       Url we're requesting
      */
-    public RxOnSubscribeVolleyRequest(RequestQueue queue, String url) {
+    public RxOnSubscribeVolleyRequest(RequestQueue queue, CharSequence url) {
         mUrl = url;
         mQueue = queue;
     }
@@ -47,7 +47,7 @@ public class RxOnSubscribeVolleyRequest implements Observable.OnSubscribe<String
     @Override
     public void call(final Subscriber<? super String> subscriber) {
         // Create and send the volley request
-        mQueue.add( new StringRequest(Request.Method.GET, mUrl,
+        mQueue.add( new StringRequest(Request.Method.GET, mUrl.toString(),
                 new Response.Listener<String>() { public void onResponse(String response) {
                     subscriber.onNext(response);
                 }},

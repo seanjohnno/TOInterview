@@ -1,4 +1,4 @@
-package timeout.slang.com.view.helper;
+package timeout.slang.com.ui.helper;
 
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
 

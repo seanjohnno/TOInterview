@@ -1,10 +1,11 @@
-package timeout.slang.com.view.loaders;
+package timeout.slang.com.ui.categories;
 
 import android.support.v4.app.FragmentActivity;
 
 import javax.inject.Inject;
 
 import timeout.slang.com.model.ITimeoutModel;
+import timeout.slang.com.ui.LoaderTimeoutModel;
 
 /**
  * Just here to make the DI injection less awkward and not create a loader class if we don't need one
@@ -39,11 +40,11 @@ public class LoaderMainBuilder {
         mModel = model;
     }
 
-    public LoaderMain build() {
-        return new LoaderMain(mContext, mModel, START_URL);
+    public LoaderTimeoutModel build() {
+        return new LoaderTimeoutModel(mContext, mModel, START_URL);
     }
 
-    public LoaderMain build(String url) {
-        return new LoaderMain(mContext, mModel, BASE_URL + url);
+    public LoaderTimeoutModel build(String url) {
+        return new LoaderTimeoutModel(mContext, mModel, BASE_URL + url);
     }
 }

@@ -11,23 +11,19 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import timeout.slang.com.model.ITimeoutModel;
-import timeout.slang.com.model.dataobjects.TOCategoryItem;
 import timeout.slang.com.model.dataobjects.TODataObjectProvider;
-import timeout.slang.com.model.dataobjects.TOSection;
 import timeout.slang.com.model.helper.HelperHTMLSanitizer;
 import timeout.slang.com.model.impl.TimeoutModelImpl;
-import timeout.slang.com.model.scraper.IScraperMain;
 import timeout.slang.com.model.scraper.ScraperBuilder;
-import timeout.slang.com.model.scraper.ScraperMainImpl;
-import timeout.slang.com.view.fragments.FragmentMain;
-import timeout.slang.com.view.fragments.FragmentSubCategory;
-import timeout.slang.com.view.helper.HelperGetMeAJob;
+import timeout.slang.com.ui.FragmentBase;
+import timeout.slang.com.ui.categories.FragmentCategories;
+import timeout.slang.com.ui.helper.HelperGetMeAJob;
 
 /**
  * Dagger module for model classes
  */
 @Module(library = true, injects = { TimeoutModelImpl.class, TODataObjectProvider.class,
-        ScraperBuilder.class, FragmentMain.class, FragmentSubCategory.class, HelperGetMeAJob.class })
+        ScraperBuilder.class, FragmentCategories.class, HelperGetMeAJob.class, FragmentBase.class })
 public class ModuleModel {
 
     private final Application mApp;

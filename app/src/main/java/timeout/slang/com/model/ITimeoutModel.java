@@ -10,8 +10,10 @@ import timeout.slang.com.model.dataobjects.TOSection;
  */
 public interface ITimeoutModel {
 
-    /**
-     * @return      Rx Observable, subscribe on this to receive the list of TO categories
-     */
-    public Observable<List<TOSection>> getCategories(String url);
+    public interface ITimeoutModelObserver {
+        public void handleCategories(List<TOSection> sections);
+        public void handleFailure(String url, Throwable t);
+    }
+
+    public void fetchData(ITimeoutModelObserver observer, CharSequence url);
 }

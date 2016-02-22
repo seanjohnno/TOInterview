@@ -1,11 +1,7 @@
-package timeout.slang.com.view.views;
+package timeout.slang.com.ui.views;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -13,9 +9,8 @@ import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
-import timeout.slang.com.R;
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
-import timeout.slang.com.view.helper.HelperTOImage;
+import timeout.slang.com.ui.helper.HelperTOImage;
 
 /**
  * Extends ImageView, sizes image based on width available then setting the height at the correct

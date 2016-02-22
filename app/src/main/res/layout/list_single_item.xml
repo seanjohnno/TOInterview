@@ -7,7 +7,7 @@
     android:padding="2px"
     android:background="@android:color/black">
 
-    <timeout.slang.com.view.views.ViewTOImage
+    <timeout.slang.com.ui.views.ViewTOImage
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:id="@+id/single_img"

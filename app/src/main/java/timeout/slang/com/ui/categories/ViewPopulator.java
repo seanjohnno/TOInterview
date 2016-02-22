@@ -1,4 +1,4 @@
-package timeout.slang.com.view.adapters.main;
+package timeout.slang.com.ui.categories;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -36,7 +36,7 @@ public class ViewPopulator {
         public int getType();
 
         /**
-         * Called by AdapterMain
+         * Called by AdapterCategories
          * @param viewHolder    ViewHolder and View items to populate
          */
         public void populateView(RecyclerView.ViewHolder viewHolder);
@@ -50,8 +50,11 @@ public class ViewPopulator {
 
         private String mTitle;
 
-        public TitlePopulator(String title) {
+        private ICategorySelectListener mListener;
+
+        public TitlePopulator(String title, ICategorySelectListener listener) {
             mTitle = title;
+            mListener = listener;
         }
 
         public void populateView(RecyclerView.ViewHolder viewHolder){
@@ -71,8 +74,11 @@ public class ViewPopulator {
 
         private TOCategoryItem mItem;
 
-        public SingleImagePopulator(TOCategoryItem item) {
+        private ICategorySelectListener mListener;
+
+        public SingleImagePopulator(TOCategoryItem item, ICategorySelectListener listener) {
             mItem = item;
+            mListener = listener;
         }
 
         public void populateView(RecyclerView.ViewHolder viewHolder){
@@ -90,9 +96,7 @@ public class ViewPopulator {
 
         @Override
         public void onClick(View v) {
-            // I don't like this cast but alternatives are setting a singleton or having a reference
-            // in every list item :/
-            ((IFragmentController)v.getContext()).subCategoryClicked(mItem.getLink());
+            mListener.handleCategorySelect(mItem.getLink());
         }
     }
 
@@ -106,9 +110,12 @@ public class ViewPopulator {
 
         private TOCategoryItem mRhs;
 
-        public DoubleImagePopulator(TOCategoryItem lhs, TOCategoryItem rhs) {
+        private ICategorySelectListener mListener;
+
+        public DoubleImagePopulator(TOCategoryItem lhs, TOCategoryItem rhs, ICategorySelectListener listener) {
             mLhs = lhs;
             mRhs = rhs;
+            mListener = listener;
         }
 
         public void populateView(RecyclerView.ViewHolder viewHolder){
@@ -122,10 +129,10 @@ public class ViewPopulator {
             // Not a fan of the casts but alternatives are setting a singleton or having a reference
             // in every list item
             vh.getLhsImgView().setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-                ((IFragmentController)v.getContext()).subCategoryClicked(mLhs.getLink());
+                mListener.handleCategorySelect(mLhs.getLink());
             } } );
             vh.getmRhsImgView().setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-                ((IFragmentController)v.getContext()).subCategoryClicked(mRhs.getLink());
+                mListener.handleCategorySelect(mLhs.getLink());
             } } );
         }
 

@@ -1,4 +1,4 @@
-package timeout.slang.com.view.helper;
+package timeout.slang.com.ui.helper;
 
 import android.content.res.Resources;
 
@@ -7,12 +7,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import timeout.slang.com.ActivityFragmentController;
+import timeout.slang.com.IFragmentController;
 import timeout.slang.com.R;
-import timeout.slang.com.TOApp;
 import timeout.slang.com.model.dataobjects.TOCategoryItem;
 import timeout.slang.com.model.dataobjects.TODataObjectProvider;
 import timeout.slang.com.model.dataobjects.TOSection;
-import timeout.slang.com.view.views.ViewTOImage;
+import timeout.slang.com.ui.views.ViewTOImage;
 
 /**
  * Created by MrLenovo on 17/02/2016.
@@ -32,7 +32,7 @@ public class HelperGetMeAJob {
             categoryItem.setCategoryImage(ViewTOImage.LOCAL_RSC + R.drawable.king);
             categoryItem.setCategoryName(rsc.getString(R.string.employment));
             categoryItem.setAspectRatio(TOCategoryItem.AspectRatio.Ratio_4_3);
-            categoryItem.setLink(ActivityFragmentController.KingClick);             //
+            categoryItem.setLink(IFragmentController.KingClick);             //
 
             TOSection section = mProvider.createTOSection(rsc.getString(R.string.recruitment));
             section.addItem(categoryItem);
